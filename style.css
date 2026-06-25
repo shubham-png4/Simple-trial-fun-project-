@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Master Layout Grid */
+.main-container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 90px);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 240px;
+    background-color: #000000;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1DB954; /* Spotify Green */
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #ffffff;
+}
+
+/* Dashboard Content Area */
+.content {
+    flex: 1;
+    background: linear-gradient(to bottom, #121212 0%, #121212 100%);
+    padding: 30px;
+    overflow-y: auto;
+}
+
+header h2 {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.playlist-section h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+/* Interactive Track Row Design */
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.song-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.song-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    margin-right: 16px;
+}
+
+.song-item-details {
+    flex: 1;
+}
+
+.song-item-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.song-item-artist {
+    font-size: 14px;
+    color: #b3b3b3;
+}
+
+/* Bottom Persistent Player Bar */
+.player-bar {
+    height: 90px;
+    background-color: #181818;
+    border-top: 1px solid #282828;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.current-song-info {
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.current-song-info img {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+    margin-right: 14px;
+}
+
+.track-details .title {
+    font-size: 14px;
+    color: #fff;
+}
+
+.track-details .artist {
+    font-size: 12px;
+    color: #b3b3b3;
+}
+
+/* Center Control Stack */
+.player-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    gap: 8px;
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.control-buttons button {
+    background: none;
+    border: none;
+    color: #b3b3b3;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.1s;
+}
+
+.control-buttons button:hover {
+    color: #ffffff;
+}
+
+.control-buttons button.play-pause {
+    background-color: #ffffff;
+    color: #000000;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-buttons button.play-pause:hover {
+    transform: scale(1.05);
+}
+
+/* Progress Sliders Styling */
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    font-size: 11px;
+    color: #b3b3b3;
+}
+
+input[type="range"] {
+    flex: 1;
+    accent-color: #1DB954;
+    height: 4px;
+    cursor: pointer;
+}
+
+/* Right System Controls */
+.volume-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 30%;
+    justify-content: flex-end;
+    color: #b3b3b3;
+}
+
+.volume-controls input {
+    max-width: 100px;
+}

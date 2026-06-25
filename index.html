@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Task Tracker</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #1e1e2e; color: #cdd6f4; display: flex; justify-content: center; padding-top: 50px; }
+        .container { background: #313244; padding: 25px; border-radius: 8px; width: 350px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        h2 { margin-top: 0; color: #89b4fa; }
+        ul { list-style: none; padding: 0; }
+        li { background: #45475a; padding: 10px; margin: 5px 0; border-radius: 4px; display: flex; justify-content: space-between; }
+        input, button { padding: 8px; border-radius: 4px; border: none; }
+        button { background: #a6e3a1; color: #11111b; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Task Tracker</h2>
+        <input type="text" id="taskInput" placeholder="New task...">
+        <button onclick="addTask()">Add</button>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        const API_URL = 'http://127.0.0.1:5000/api/tasks';
+
+        async function fetchTasks() {
+            const res = await fetch(API_URL);
+            const tasks = await res.json();
+            const list = document.getElementById('taskList');
+            list.innerHTML = tasks.map(t => `<li>${t.title} <span>${t.completed ? '✅' : '⏳'}</span></li>`).join('');
+        }
+
+        async function addTask() {
+            const input = document.getElementById('taskInput');
+            if (!input.value) return;
+            await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: input.value })
+            });
+            input.value = '';
+            fetchTasks();
+        }
+
+        fetchTasks();
+    </script>
+</body>
+</html>
